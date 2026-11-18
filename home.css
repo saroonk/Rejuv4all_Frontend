@@ -14,19 +14,21 @@
   --ivory: #F7F6F2;          /* Neutral canvas */
   --grey: #EAE8E2;           /* Soft grey rules */
   --white: #FFFFFF;
-  --gold: #B49A57;           /* Champagne gold (secondary) */
+  --gold: #e3bd5f;           /* Champagne gold (secondary) */
   --gold-light: #C5AD70;     /* Muted gold (tertiary) */
-  --gold-text: #715c1f;      /* design.md "secondary" token — gold text on light grounds */
+  --gold-text: #c4970e;      /* design.md "secondary" token — gold text on light grounds */
   --gold-20: rgba(180, 154, 87, .2);
-  --gold-30: rgba(180, 154, 87, .3);
-  --gold-60: rgba(180, 154, 87, .6);
+  --gold-30: rgba(243, 198, 84, 0.3);
+  --gold-60: rgba(243, 188, 51, 0.6);
 
-  /* Typography: Newsreader (headings / editorial serif) + Manrope (body / interface). */
-  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  /* Typography system (single source of truth):
+     headings = Newsreader (editorial serif; Canela is a licensed font, not available here)
+     content  = Poppins (all body / interface text) */
+  --font-serif: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-heading: var(--font-serif);
-  --font-hero: var(--font-serif);
-  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: var(--font-sans); /* small uppercase labels now use Manrope */
+  --font-hero: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif; /* hero main title only (regular Roboto, not Roboto Serif) */
+  --font-sans: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-sans); /* small uppercase labels use the content font */
 
   --header-h: 76px;
   --ease: cubic-bezier(.4, 0, .2, 1);
@@ -73,7 +75,7 @@ h1, h2, h3, h4, p, figure, dl, dd, blockquote { margin: 0; }
   color: var(--black);
   margin-bottom: 1.5rem;
 }
-.h-display em, .hero h1 em { font-style: italic; color: var(--gold-text); }
+.h-display em, .hero h1 em { font-family: inherit; font-style: normal; font-weight: 500; color: var(--gold-text); }
 .h-display--sm { font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.5rem); line-height: 1.25; margin-bottom: .5rem; }
 .h-display--xs { font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem); line-height: 1.25; font-weight: 400; margin-bottom: 0; }
 .h-display--light { color: var(--white); }
@@ -216,8 +218,8 @@ html.drawer-open, html.drawer-open body { overflow: hidden; }
 .hero-content > * { pointer-events: auto; }
 .eyebrow-line { display: flex; align-items: center; gap: .75rem; color: var(--gold-light); font-size: 11px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; margin-bottom: 1rem; }
 .eyebrow-line .rule { width: 24px; height: 1px; background: var(--gold-light); flex: none; }
-.hero h1 { font-family: var(--font-hero); font-weight: 400; color: var(--white); font-size: clamp(2rem, 1.33rem + 2.85vw, 3.72rem); line-height: 1.05; letter-spacing: -.01em; margin-bottom: .75rem; }
-.hero h1 em { color: var(--gold-light); font-weight: 400; }
+.hero h1 { font-family: var(--font-hero); font-weight: 300; color: var(--white); font-size: clamp(2rem, 1.33rem + 2.85vw, 3.72rem); line-height: 1.05; letter-spacing: -.01em; margin-bottom: .75rem; }
+.hero h1 em { color: var(--gold-light); font-weight: 500; }
 @media (min-width: 1200px) { .hero h1 { font-size: 64.6px; } } /* desktop hero title */
 .hero p { color: rgba(255,255,255,.82); font-weight: 400; font-size: clamp(15px, 1.2vw + 10px, 18px); line-height: 1.7; max-width: 36rem; margin-bottom: 1.75rem; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
