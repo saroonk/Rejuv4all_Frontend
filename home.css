@@ -499,12 +499,25 @@ html.drawer-open, html.drawer-open body { overflow: hidden; }
   .stats span { font-size: 8px; letter-spacing: .06em; white-space: nowrap; }
 }
 
+/* ---------- 15b. Scroll reveal (minimal; classes are added/removed by JS) ---------- */
+.rv { opacity: 0; transition: opacity .9s cubic-bezier(.22, .61, .36, 1) var(--rv-delay, 0ms), transform .9s cubic-bezier(.22, .61, .36, 1) var(--rv-delay, 0ms); will-change: opacity, transform; }
+.rv-up { transform: translate3d(0, 22px, 0); }
+.rv-left { transform: translate3d(0, 22px, 0); }   /* stacked layouts: simple rise */
+.rv-right { transform: translate3d(0, 22px, 0); }
+.rv-fade { transform: none; }
+@media (min-width: 992px) {
+  .rv-left { transform: translate3d(-26px, 0, 0); }   /* fades in moving left → right */
+  .rv-right { transform: translate3d(26px, 0, 0); }   /* fades in moving right → left */
+}
+.rv.rv-in { opacity: 1; transform: none; }
+
 /* ---------- 16. Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .xf-1 { opacity: 1; }
   .xf-2 { opacity: 0; }
+  .rv { opacity: 1 !important; transform: none !important; }
   .hero-slide.is-active img { transform: none; }
 }
 

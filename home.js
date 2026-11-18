@@ -318,6 +318,52 @@
     form.reset();
   });
 
+  /* ---------- Scroll reveal (subtle, once per element) ---------- */
+  // [selector, effect, stagger step in ms]. Effects: up | left | right | fade
+  var REVEALS = [
+    ['.section-head', 'up', 0],
+    ['#story .col-lg-6', 'left', 0],
+    ['#story .frame-card', 'right', 0],
+    ['.stage-card', 'up', 110],
+    ['.shop .gallery-main', 'left', 0],
+    ['.shop .gallery-strip', 'left', 0],
+    ['.shop .col-lg-5 > *', 'right', 70],
+    ['#ritual .frame-card', 'left', 0],
+    ['.steps li', 'up', 90],
+    ['.pillar', 'up', 100],
+    ['.timeline-wrap > .text-center', 'up', 0],
+    ['#goals .goals', 'fade', 0],
+    ['.review-slider', 'fade', 0],
+    ['.faq-item', 'up', 60],
+    ['.final-inner > *', 'up', 80],
+    ['.site-footer .row > div', 'fade', 90]
+  ];
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var revealIO = new IntersectionObserver(function (entries) {
+      var i = 0; // elements that enter together are staggered in DOM order
+      entries.filter(function (en) { return en.isIntersecting; }).forEach(function (en) {
+        var el = en.target;
+        revealIO.unobserve(el);
+        var delay = Math.min(i * (parseInt(el.dataset.rvStep, 10) || 0), 420);
+        i++;
+        el.style.setProperty('--rv-delay', delay + 'ms');
+        el.classList.add('rv-in');
+        // Once finished, drop the helper classes so the element's own hover/transition styles apply again
+        setTimeout(function () {
+          el.classList.remove('rv', 'rv-in', 'rv-up', 'rv-left', 'rv-right', 'rv-fade');
+          el.style.removeProperty('--rv-delay');
+        }, 1000 + delay);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    REVEALS.forEach(function (r) {
+      $$(r[0]).forEach(function (el) {
+        el.classList.add('rv', 'rv-' + r[1]);
+        el.dataset.rvStep = r[2];
+        revealIO.observe(el);
+      });
+    });
+  }
+
   /* ---------- Placeholder links (href="#") should not jump ---------- */
   $$('a[href="#"]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); }); });
 })();
