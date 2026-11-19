@@ -444,7 +444,7 @@ html.drawer-open, html.drawer-open body { overflow: hidden; }
 /* ---------- 15. Responsive ---------- */
 @media (min-width: 576px) {
   .section-pad { padding-left: 3rem; padding-right: 3rem; }
-  .hero-content { padding-left: 3rem; padding-right: 3rem; padding-bottom: 7rem; }
+  .hero-content { padding-left: 3rem; padding-right: 3rem; padding-bottom: 4.5rem; }
   .hero-controls { right: 3rem; }
   .final-ctas { flex-direction: row; }
   .final-ctas a { width: auto; }
@@ -462,7 +462,7 @@ html.drawer-open, html.drawer-open body { overflow: hidden; }
   .site-header { padding: 0 3rem; }
   .section-pad { padding-left: 4rem; padding-right: 4rem; padding-top: 7rem; padding-bottom: 7rem; }
   .section-pad--tight { padding-top: 5.5rem; padding-bottom: 5.5rem; }
-  .hero-content { padding-left: 5rem; padding-bottom: 8rem; }
+  .hero-content { padding-left: 5rem; padding-bottom: 4.5rem; }
   .hero-controls { right: 5rem; }
   .footer-pad { padding-left: 4rem; padding-right: 4rem; }
   .goal-slide { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
@@ -472,8 +472,9 @@ html.drawer-open, html.drawer-open body { overflow: hidden; }
 }
 @media (max-width: 575.98px) {
   .hero-controls { display: none; }
-  .hero-content { padding-bottom: 3.25rem; }
+  .hero-content { padding-bottom: 2.25rem; }
   .hero-ctas a { width: 100%; }
+  .hero-ctas .hero-btn--link { width: auto; align-self: flex-start; justify-content: flex-start; }
   .hero-overlay { background: linear-gradient(to top, var(--black) 0%, rgba(16,16,16,.55) 55%, rgba(0,0,0,.45) 100%); }
   .specs > div { flex-direction: column; gap: .15rem; }
   .specs dd { text-align: left; }
@@ -542,7 +543,39 @@ html.drawer-open, html.drawer-open body { overflow: hidden; }
 .btn-ico--before { margin-right: .65em; }
 
 /* Arrow nudge on hover: hero "Discover the Formula" + navbar "Shop Now" */
-.hero-ctas .btn-gold .btn-ico--after, .nav-cta .btn-ico--after { display: inline-block; transition: transform .35s var(--ease); }
-.hero-ctas .btn-gold:hover .btn-ico--after, .hero-ctas .btn-gold:focus-visible .btn-ico--after,
+.nav-cta .btn-ico--after { display: inline-block; transition: transform .35s var(--ease); }
 .nav-cta:hover .btn-ico--after, .nav-cta:focus-visible .btn-ico--after { transform: translateX(5px); }
-@media (prefers-reduced-motion: reduce) { .hero-ctas .btn-gold:hover .btn-ico--after, .nav-cta:hover .btn-ico--after { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .nav-cta:hover .btn-ico--after { transform: none; } }
+
+/* ---------- Refined hero + navbar buttons (scoped; other .btn-* uses are untouched) ----------
+   Navbar CTA = gold hairline outline. (Hero buttons: see "Hero CTA buttons" below.) */
+.nav-cta {
+  background-image: none; background-size: auto; box-shadow: none; border-radius: 0;
+  font-weight: 500; letter-spacing: .2em;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  transition: background-color .45s var(--ease), border-color .45s var(--ease), color .45s var(--ease);
+}
+.nav-cta { background-color: transparent; border-color: rgba(197,173,112,.7); color: var(--gold-light); }
+.nav-cta:hover, .nav-cta:focus-visible { background-color: rgba(180,154,87,.16); border-color: #E0CB93; color: var(--white); box-shadow: none; }
+
+/* ---------- Hero CTA buttons ----------
+   Primary  (Shop Now): transparent, gold text + gold hairline; fills with gold and turns black on hover.
+   Secondary (Discover the Formula): editorial text link – no box, a gold rule beneath that draws across, arrow glides. */
+.hero-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .85rem; border: 0; border-radius: 0; text-decoration: none;
+  font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; cursor: pointer; }
+.hero-btn--primary { padding: 1.1rem 2.75rem; background-color: transparent; color: var(--gold-light); border: 1px solid rgba(197,173,112,.6); letter-spacing: .28em;
+  transition: background-color .5s var(--ease), border-color .5s var(--ease), color .5s var(--ease); }
+.hero-btn--primary:hover, .hero-btn--primary:focus-visible { background-color: var(--gold-light); border-color: var(--gold-light); color: var(--black); }
+
+.hero-btn--link { padding: 1.1rem .15rem; color: var(--white); transition: color .45s var(--ease); }
+.hero-btn--link::after { content: ""; position: absolute; left: 0; right: 0; bottom: .7rem; height: 1px; background: var(--gold-light);
+  transform: scaleX(.28); transform-origin: left center; transition: transform .6s var(--ease); }
+.hero-btn--link .hero-btn__arrow { color: var(--gold-light); font-size: .95em; transition: transform .45s var(--ease); }
+.hero-btn--link:hover, .hero-btn--link:focus-visible { color: var(--gold-light); }
+.hero-btn--link:hover::after, .hero-btn--link:focus-visible::after { transform: scaleX(1); }
+.hero-btn--link:hover .hero-btn__arrow, .hero-btn--link:focus-visible .hero-btn__arrow { transform: translateX(6px); }
+/* Price beside the hero CTA */
+.hero-price { align-self: center; padding-left: 1.1rem; border-left: 1px solid rgba(255,255,255,.28); font-size: 14px; line-height: 1; font-weight: 500; letter-spacing: .1em; color: rgba(255,255,255,.85); }
+.hero-price[hidden] { display: none; }
+.hero-btn:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .hero-btn--link:hover .hero-btn__arrow { transform: none; } }

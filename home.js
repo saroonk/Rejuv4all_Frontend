@@ -193,6 +193,13 @@
   var addBtn = $('#add-to-cart');
   var PRODUCT = { id: 'rejuv4all-hair-elixir-50ml', name: 'Rejuv4All Botanical Restorative Hair Elixir', price: 68, currency: 'USD' };
 
+  // Hero CTA price: always taken from PRODUCT (the same data the cart and Add to Cart label use)
+  var heroPrice = $('#hero-price');
+  if (heroPrice && typeof PRODUCT.price === 'number') {
+    heroPrice.textContent = '$' + PRODUCT.price.toFixed(2);
+    heroPrice.hidden = false;
+  }
+
   function readCart() {
     try { var c = JSON.parse(localStorage.getItem(CART_KEY)); return c && Array.isArray(c.items) ? c : { items: [] }; }
     catch (e) { return { items: [] }; }
