@@ -1,0 +1,107 @@
+/* =========================================================
+   Rejuv4All — About page (about.html)
+   Uses the homepage design system (home.css): section--ivory / --charcoal / --white, gold + black, the same
+   heading font and <em> gold accents, .btn-gold. Rhythm: dark hero → ivory story → dark philosophy →
+   white approach → dark closing. Page-specific pieces only live here.
+   ========================================================= */
+
+/* ---------- shared bits ---------- */
+.ab-eyebrow { display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem; font-size: 11px; line-height: 16px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-text); }
+.ab-eyebrow::before { content: ""; width: 1.75rem; height: 1px; background: var(--gold); }
+.ab-eyebrow--light { color: var(--gold-light); }
+.ab-eyebrow--center { justify-content: center; }
+.ab-eyebrow--center::after { content: ""; width: 1.75rem; height: 1px; background: var(--gold); }
+.ab-h2 { margin: 0; font-family: var(--font-heading); font-weight: 500; font-size: clamp(1.9rem, 1.4rem + 2vw, 3rem); line-height: 1.1; letter-spacing: -.012em; color: var(--black); }
+.ab-h2--light { color: var(--white); }
+.ab-h2 em, .ab-hero__title em { font-family: inherit; font-style: normal; font-weight: 500; color: var(--gold-text); }
+.ab-h2--light em, .ab-hero__title em { color: var(--gold-light); }
+.ab-rule { width: 3.5rem; height: 1px; margin: 1.4rem 0 1.6rem; background: var(--gold); }
+.ab-lead { margin: 0 0 1.1rem; font-size: 1.1rem; line-height: 1.7; color: rgba(16, 16, 16, .82); }
+.ab-body { margin: 0 0 1.1rem; font-size: 15px; line-height: 1.8; color: rgba(16, 16, 16, .68); }
+.ab-body--light { color: rgba(255, 255, 255, .7); }
+.ab-btn { margin-top: 1.25rem; }
+
+/* ---------- 1 · hero ---------- */
+.ab-hero { position: relative; display: flex; align-items: flex-end; min-height: clamp(520px, 78vh, 700px); padding: calc(64px + 3rem) 0 3.25rem; overflow: hidden; background: #3a2c1c; color: var(--white); }
+.ab-hero__bg, .ab-hero__bg img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ab-hero__bg img { object-fit: cover; object-position: 60% 25%; }
+.ab-hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(16, 16, 16, .88) 0%, rgba(16, 16, 16, .5) 50%, rgba(16, 16, 16, .22) 100%); }
+.ab-hero__inner { position: relative; z-index: 2; padding-left: 1.5rem; padding-right: 1.5rem; max-width: 1280px; }
+.ab-hero__title { max-width: 34rem; margin: 0; font-family: var(--font-heading); font-weight: 500; font-size: clamp(2.4rem, 1.6rem + 3.4vw, 4.4rem); line-height: 1.04; letter-spacing: -.02em; color: var(--white); text-shadow: 0 1px 20px rgba(16, 16, 16, .35); }
+.ab-hero__text { max-width: 31rem; margin: 1.25rem 0 0; font-size: clamp(15px, .9rem + .3vw, 17px); line-height: 1.7; color: rgba(255, 255, 255, .9); text-shadow: 0 1px 12px rgba(16, 16, 16, .45); }
+
+/* ---------- 2 · story ---------- */
+.ab-story .section-pad { padding-top: 4rem; padding-bottom: 4.5rem; }
+.ab-figure { position: relative; margin: 0; overflow: hidden; aspect-ratio: 4 / 5; }
+.ab-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ab-figure::after { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(255, 255, 255, .55); pointer-events: none; }
+.ab-figure--wide { aspect-ratio: 4 / 3.4; }
+.ab-quote { margin: 1.75rem 0 0; padding-left: 1.25rem; border-left: 2px solid var(--gold); font-family: var(--font-heading); font-weight: 500; font-size: 1.35rem; line-height: 1.4; color: var(--black); }
+
+/* journey: three moments joined by a fine gold line */
+.ab-journey { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--gold-30); }
+.ab-steps { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; margin: 0; padding: 0; list-style: none; }
+.ab-steps li { position: relative; padding-top: 1.5rem; }
+.ab-steps li::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: var(--gold-30); }
+.ab-steps li::after { content: ""; position: absolute; top: -4px; left: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); }
+.ab-steps__n { display: block; margin-bottom: .5rem; font-family: var(--font-heading); font-size: 2.2rem; line-height: 1; font-weight: 500; color: var(--gold-text); }
+.ab-steps h3 { margin: 0 0 .5rem; font-family: var(--font-heading); font-weight: 500; font-size: 1.35rem; color: var(--black); }
+.ab-steps p { margin: 0; max-width: 24rem; font-size: 14px; line-height: 1.75; color: rgba(16, 16, 16, .66); }
+
+/* ---------- 3 · philosophy (dark) ---------- */
+.ab-philosophy { border-top: 1px solid var(--gold-20); }
+.ab-philosophy .section-pad { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+.ab-beliefs { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(255, 255, 255, .12); }
+.ab-beliefs li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; padding: 1.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+.ab-beliefs__n { font-family: var(--font-heading); font-size: 1.5rem; line-height: 1.2; font-weight: 500; color: var(--gold-light); }
+.ab-beliefs h3 { margin: 0 0 .5rem; font-family: var(--font-heading); font-weight: 500; font-size: 1.5rem; line-height: 1.2; color: var(--white); }
+.ab-beliefs p { margin: 0; max-width: 34rem; font-size: 15px; line-height: 1.75; color: rgba(255, 255, 255, .68); }
+
+/* ---------- 4 · approach (white) ---------- */
+.ab-approach .section-pad { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+.ab-ritual { margin: 0 0 .5rem; padding: 0; list-style: none; counter-reset: r; border-top: 1px solid var(--grey); }
+.ab-ritual li { counter-increment: r; display: flex; gap: .9rem; align-items: baseline; padding: .75rem 0; border-bottom: 1px solid var(--grey); font-size: 14px; line-height: 1.6; color: rgba(16, 16, 16, .7); }
+.ab-ritual li::before { content: counter(r, decimal-leading-zero); flex: none; font-family: var(--font-heading); font-size: 1rem; font-weight: 500; color: var(--gold-text); }
+.ab-ritual strong { flex: none; min-width: 5.2rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 12px; color: var(--black); }
+
+/* ---------- 5 · closing (dark, photographic) ---------- */
+.ab-closing { position: relative; overflow: hidden; background: var(--rich); color: var(--white); text-align: center; }
+.ab-closing__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.ab-closing::before { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(16, 16, 16, .78); }
+.ab-closing__inner { position: relative; z-index: 2; padding: 5rem 1.5rem; }
+.ab-closing__title { max-width: 30rem; margin: 0 auto; }
+.ab-closing__text { max-width: 28rem; margin: 1.1rem auto 0; font-size: 15px; line-height: 1.75; color: rgba(255, 255, 255, .75); }
+.ab-closing .ab-btn { margin-top: 1.75rem; }
+
+/* ---------- scroll animation (only when JS added .ab-js; skipped for reduced motion) ---------- */
+.ab-js .ab-in { opacity: 0; transform: translate3d(0, 22px, 0); transition: opacity .9s cubic-bezier(.22, .61, .36, 1), transform .9s cubic-bezier(.22, .61, .36, 1); }
+.ab-js .ab-in[data-delay="1"] { transition-delay: .12s; }
+.ab-js .ab-in[data-delay="2"] { transition-delay: .24s; }
+.ab-js .ab-in[data-delay="3"] { transition-delay: .36s; }
+.ab-js .ab-in.is-in { opacity: 1; transform: none; }
+/* images: a soft upward wipe with a slow settle (the clip is on the <img>, so the figure itself stays observable) */
+.ab-js .ab-reveal img { clip-path: inset(0 0 100% 0); transform: scale(1.08); transition: clip-path 1.2s cubic-bezier(.22, .61, .36, 1), transform 1.6s cubic-bezier(.22, .61, .36, 1); }
+.ab-js .ab-reveal::after { opacity: 0; transition: opacity .8s ease .9s; }
+.ab-js .ab-reveal.is-in img { clip-path: inset(0 0 0 0); transform: scale(1); }
+.ab-js .ab-reveal.is-in::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .ab-js .ab-in, .ab-js .ab-reveal img, .ab-js .ab-reveal::after { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
+}
+
+/* ---------- breakpoints ---------- */
+@media (min-width: 576px) {
+  .ab-hero__inner { padding-left: 3rem; padding-right: 3rem; }
+}
+@media (min-width: 768px) {
+  .ab-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+  .ab-beliefs li { grid-template-columns: 4rem minmax(0, 1fr); gap: 1.5rem; }
+}
+@media (min-width: 992px) {
+  .ab-hero { padding: calc(72px + 3rem) 0 4.5rem; }
+  .ab-hero__inner { padding-left: 4rem; padding-right: 4rem; }
+  .ab-story .section-pad { padding-top: 6rem; padding-bottom: 6rem; }
+  .ab-journey { margin-top: 5.5rem; padding-top: 3.5rem; }
+  .ab-philosophy .section-pad, .ab-approach .section-pad { padding-top: 6.5rem; padding-bottom: 6.5rem; }
+  .ab-sticky { position: sticky; top: 110px; }
+  .ab-closing__inner { padding: 7rem 4rem; }
+}

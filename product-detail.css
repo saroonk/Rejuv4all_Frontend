@@ -1,0 +1,63 @@
+/* =========================================================
+   Rejuv4All — Product detail page (product-detail.html)
+   Dark theme matching the homepage product section (.section--charcoal.shop from home.css): the breadcrumb,
+   the purchase section and the information tabs share one continuous dark surface. The purchase section is
+   the homepage markup and classes unchanged; this file adds the breadcrumb, the tabs and tight spacing.
+   ========================================================= */
+
+/* One continuous surface: breadcrumb bar + purchase section + tabs */
+.page-product-detail main { background: var(--rich); }
+.pd-crumbbar { background: var(--rich); padding: calc(64px + 1.25rem) 0 .25rem; }
+
+/* Breadcrumb (top-left, subtle) */
+.pd-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: .15rem .55rem; margin: 0; padding: 0; list-style: none; font-size: 11px; line-height: 18px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .4); }
+.pd-crumbs li { display: inline-flex; align-items: center; gap: .55rem; min-width: 0; }
+.pd-crumbs li + li::before { content: "/"; color: rgba(255, 255, 255, .25); }
+.pd-crumbs a { color: rgba(255, 255, 255, .6); transition: color .2s; }
+.pd-crumbs a:hover { color: var(--gold-light); }
+.pd-crumbs [aria-current] { color: var(--white); max-width: 22rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Purchase section: homepage styles, no top rule, compact padding (the breadcrumb already clears the navbar) */
+.pd-shop { background: var(--rich); border-top: 0; }
+.pd-shop .section-pad { padding-top: 1.25rem; padding-bottom: 3rem; }
+.pd-shop .gallery-badge[hidden] { display: none; }
+.pd-shop .buy-head .h-display { margin-bottom: 1rem; } /* the homepage has a product-name line between title and price; here the title is the name */
+
+/* Information tabs: directly under the product, same surface, separated by a hairline */
+.pd-info { margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, .1); }
+.pd-tabs { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.pd-tabs .goal-tab { padding: 9px 16px; background: transparent; border: 1px solid rgba(255, 255, 255, .18); color: rgba(255, 255, 255, .6); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.pd-tabs .goal-tab:hover { border-color: var(--gold); color: var(--white); }
+.pd-tabs .goal-tab.is-active { border-color: var(--gold); background: rgba(180, 154, 87, .12); color: var(--gold-light); font-weight: 600; }
+.pd-panel { padding: 1.25rem 1.25rem; background: rgba(255, 255, 255, .03); border: 1px solid rgba(255, 255, 255, .08); }
+.pd-panel[hidden] { display: none; }
+.pd-panel h3 { margin: 0 0 .6rem; font-family: var(--font-serif); font-weight: 500; font-size: 1.25rem; color: var(--white); }
+.pd-panel p { margin: 0 0 .75rem; font-size: 14px; line-height: 1.7; color: rgba(255, 255, 255, .72); }
+.pd-panel p:last-child { margin-bottom: 0; }
+.pd-list, .pd-steps { margin: 0; padding: 0; list-style: none; }
+.pd-list li { position: relative; padding: .5rem 0 .5rem 1.4rem; border-bottom: 1px solid rgba(255, 255, 255, .08); font-size: 14px; line-height: 1.55; color: rgba(255, 255, 255, .78); }
+.pd-list li:last-child { border-bottom: 0; }
+.pd-list li::before { content: ""; position: absolute; left: 0; top: 1rem; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); }
+.pd-steps { counter-reset: step; }
+.pd-steps li { counter-increment: step; display: flex; gap: 1rem; padding: .65rem 0; border-bottom: 1px solid rgba(255, 255, 255, .08); font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, .78); }
+.pd-steps li:last-child { border-bottom: 0; }
+.pd-steps li::before { content: counter(step, decimal-leading-zero); flex: none; width: 2rem; font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500; color: var(--gold-light); }
+.pd-steps strong { display: block; font-weight: 600; color: var(--white); }
+
+/* Not found / no-JS */
+.pd-missing { max-width: 28rem; margin: 0 auto; padding: calc(64px + 4rem) 1.5rem 5rem; text-align: center; color: var(--white); }
+.pd-missing h1 { margin: 0 0 .5rem; font-family: var(--font-heading); font-weight: 500; font-size: 1.6rem; }
+.pd-missing p { margin: 0 0 1.5rem; font-size: 14px; color: rgba(255, 255, 255, .65); }
+.pd-note { padding: calc(64px + 3rem) 1.5rem; text-align: center; color: rgba(255, 255, 255, .65); }
+
+@media (min-width: 992px) {
+  .pd-crumbbar { padding: calc(72px + 1.5rem) 0 .25rem; }
+  .pd-shop .section-pad { padding-top: 1.5rem; padding-bottom: 4rem; }
+  .pd-info { margin-top: 2.75rem; padding-top: 1.75rem; }
+  .pd-panel { padding: 1.5rem 1.75rem; }
+}
+@media (max-width: 575.98px) {
+  .pd-tabs { flex-wrap: nowrap; overflow-x: auto; margin-left: -1.5rem; margin-right: -1.5rem; padding: 0 1.5rem .25rem; scrollbar-width: none; }
+  .pd-tabs::-webkit-scrollbar { display: none; }
+  .pd-tabs .goal-tab { flex: none; }
+}

@@ -1,0 +1,49 @@
+/* =========================================================
+   Rejuv4All — Contact page (contact.html)
+   Left: contact details. Right: straightforward form. Both sit directly on the ivory page.
+   ========================================================= */
+
+/* Get in touch: label | value rows split by hairlines (no cards) */
+.info-list { margin: 0; border-top: 1px solid var(--gold-30); }
+.info-list > div { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; align-items: baseline; padding: 1.05rem 0; border-bottom: 1px solid var(--grey); }
+.info-list dt { margin: 0; font-size: 10px; line-height: 16px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-text); }
+.info-list dd { margin: 0; font-size: 15px; line-height: 24px; color: var(--black); overflow-wrap: anywhere; }
+.info-list dd a { color: var(--black); border-bottom: 1px solid var(--gold); transition: color .25s; }
+.info-list dd a:hover { color: var(--gold-text); }
+.info-list dd.is-pending { color: rgba(16, 16, 16, .4); }
+.info-list .socials { display: flex; gap: .6rem; }
+.info-list .socials a { color: var(--gold-text); border-color: var(--gold-30); }
+.socials a[aria-disabled="true"] { opacity: .4; cursor: default; }
+.socials a[aria-disabled="true"]:hover { border-color: var(--gold-30); }
+
+/* Form: warm-white fields with gold-tinted hairlines, set apart from the ivory ground */
+.field { margin-bottom: .75rem; }
+.field label { display: block; margin-bottom: .45rem; font-size: 11px; line-height: 16px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--black); }
+.field input, .field textarea {
+  display: block; width: 100%; height: 52px; padding: 0 1rem; border: 1px solid rgba(180, 154, 87, .4); border-radius: 0; background: #fffefb;
+  font-family: var(--font-sans); font-size: 15px; line-height: 24px; color: var(--black);
+  box-shadow: inset 0 1px 2px rgba(16, 16, 16, .04);
+  transition: border-color .25s var(--ease), box-shadow .25s var(--ease), background-color .25s var(--ease);
+}
+.field input::placeholder, .field textarea::placeholder { color: rgba(16, 16, 16, .42); opacity: 1; }
+.field textarea { height: auto; min-height: 10rem; padding: .9rem 1rem; resize: vertical; }
+.field input, .field textarea { scroll-margin-top: 120px; } /* keep focused fields clear of the fixed header */
+.field input:hover, .field textarea:hover { border-color: var(--gold); }
+.field input:focus, .field textarea:focus { outline: 0; border-color: var(--gold); background: var(--white); box-shadow: 0 0 0 3px var(--gold-20); }
+.field.has-error input, .field.has-error textarea { border-color: #ba1a1a; } /* error token from DESIGN.md */
+.field-error { margin: .35rem 0 0; font-size: 12px; line-height: 18px; color: #ba1a1a; }
+.field-error:empty { display: none; }
+
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+/* Submit: black with a gold edge, fills gold on hover (shared .btn-ink) */
+.contact-form .btn-ink { margin-top: 1rem; padding: 1.1rem 2.5rem; border-bottom: 2px solid var(--gold); }
+.contact-form .btn-ink:hover, .contact-form .btn-ink:focus-visible { border-bottom-color: var(--black); }
+.form-status { margin: 1.25rem 0 0; font-size: 13px; line-height: 20px; color: rgba(16, 16, 16, .75); }
+.form-status:empty { display: none; }
+.form-status.is-error { color: #ba1a1a; }
+.form-status.is-ok { color: var(--gold-text); }
+
+/* Balance: a hairline divides the two columns on desktop */
+@media (min-width: 992px) {
+  .form-col { padding-left: 3.5rem; border-left: 1px solid var(--gold-30); }
+}

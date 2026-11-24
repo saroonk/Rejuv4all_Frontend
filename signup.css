@@ -1,0 +1,436 @@
+/* =========================================================
+   Rejuv4All — Client Registration Page (signup.html)
+   Follows the Rejuv4All design system:
+   Ivory canvas, rich black accents, champagne gold detailing,
+   architectural typography, and clean forms without excess cards.
+   ========================================================= */
+
+/* Left column: brand privileges & ritual highlights */
+.auth-side {
+  padding-bottom: 2rem;
+}
+
+.auth-perks {
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--gold-30);
+}
+
+.perk-item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--grey);
+}
+
+.perk-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  color: var(--gold-text);
+}
+
+.perk-title {
+  margin: 0 0 .3rem;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.perk-desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 20px;
+  color: rgba(16, 16, 16, .65);
+}
+
+/* Invitation box for existing clients */
+.auth-invitation {
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  background: #fffefb;
+  border: 1px solid var(--grey);
+  border-left: 3px solid var(--gold);
+}
+
+.invitation-title {
+  margin: 0 0 .4rem;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.invitation-desc {
+  margin: 0 0 1rem;
+  font-size: 13px;
+  line-height: 20px;
+  color: rgba(16, 16, 16, .65);
+}
+
+.auth-invitation-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--black);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  transition: color .3s var(--ease), border-color .3s var(--ease);
+}
+
+.auth-invitation-link i {
+  color: var(--gold-text);
+  font-size: .85em;
+  transition: transform .3s var(--ease);
+}
+
+.auth-invitation-link:hover {
+  color: var(--gold-text);
+  border-color: var(--gold-text);
+}
+
+.auth-invitation-link:hover i {
+  transform: translateX(4px);
+}
+
+/* Form container & fields */
+.auth-form {
+  margin-top: 1.5rem;
+  max-width: 540px;
+}
+
+.field {
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.field label {
+  display: block;
+  margin-bottom: .45rem;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.field label .req {
+  color: var(--gold-text);
+  margin-left: 2px;
+}
+
+.field input {
+  display: block;
+  width: 100%;
+  height: 52px;
+  padding: 0 1rem;
+  border: 1px solid rgba(180, 154, 87, .4);
+  border-radius: 0;
+  background: #fffefb;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--black);
+  box-shadow: inset 0 1px 2px rgba(16, 16, 16, .04);
+  transition: border-color .25s var(--ease), box-shadow .25s var(--ease), background-color .25s var(--ease);
+  scroll-margin-top: 120px;
+}
+
+.field input::placeholder {
+  color: rgba(16, 16, 16, .38);
+  opacity: 1;
+}
+
+.field input:hover {
+  border-color: var(--gold);
+}
+
+.field input:focus {
+  outline: 0;
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 3px var(--gold-20);
+}
+
+.field.has-error input {
+  border-color: #ba1a1a;
+  background-color: #fffbfa;
+}
+
+.field-error {
+  margin: .4rem 0 0;
+  font-size: 12px;
+  line-height: 18px;
+  color: #ba1a1a;
+  display: block;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.field-hint {
+  margin: .35rem 0 0;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(16, 16, 16, .55);
+}
+
+/* Password wrapper & eye toggle */
+.password-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrap input {
+  padding-right: 3.25rem;
+}
+
+.btn-toggle-pw {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: rgba(16, 16, 16, .45);
+  cursor: pointer;
+  padding: 0;
+  font-size: 15px;
+  transition: color .25s var(--ease);
+}
+
+.btn-toggle-pw:hover,
+.btn-toggle-pw:focus-visible {
+  color: var(--gold-text);
+  outline: none;
+}
+
+/* Phone input styling (intl-tel-input) */
+.phone-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.field .iti {
+  display: block;
+  width: 100%;
+}
+
+.field .iti input[type="tel"] {
+  height: 52px;
+  padding-right: 1rem;
+}
+
+.iti {
+  --iti-border-color: rgba(180, 154, 87, .4);
+  --iti-hover-color: var(--gold-20);
+  --iti-dropdown-bg: var(--white);
+  --iti-text-gray: rgba(16, 16, 16, .55);
+  --iti-arrow-color: var(--gold-text);
+  --iti-border-width: 1px;
+}
+
+.iti__selected-country {
+  color: var(--black);
+}
+
+.iti__selected-dial-code {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--black);
+}
+
+.iti__dropdown-content {
+  border-radius: 0;
+  box-shadow: 0 12px 32px rgba(16, 16, 16, .12);
+  font-family: var(--font-sans);
+  border: 1px solid var(--grey);
+}
+
+.iti__search-input {
+  height: 44px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  border-radius: 0;
+}
+
+.iti__country {
+  font-size: 14px;
+}
+
+.iti--fullscreen-popup.iti--container {
+  z-index: 1070;
+}
+
+.field.phone-fallback {
+  position: relative;
+}
+
+.field.phone-fallback .phone-fixed {
+  position: absolute;
+  left: 1rem;
+  bottom: 14px;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.field.phone-fallback input {
+  padding-left: 3.5rem;
+}
+
+/* Terms notice */
+.auth-terms {
+  margin: 1.25rem 0 .5rem;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(16, 16, 16, .55);
+}
+
+.auth-terms a {
+  color: var(--black);
+  border-bottom: 1px solid var(--gold);
+  text-decoration: none;
+  transition: color .2s var(--ease);
+}
+
+.auth-terms a:hover {
+  color: var(--gold-text);
+}
+
+/* Honeypot field (hidden from genuine users) */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Submit button */
+.auth-submit {
+  margin-top: 1rem;
+  padding: 1.1rem 2.5rem;
+  border-bottom: 2px solid var(--gold);
+}
+
+.auth-submit:hover,
+.auth-submit:focus-visible {
+  border-bottom-color: var(--black);
+}
+
+.auth-submit.is-loading {
+  opacity: .75;
+  cursor: wait;
+}
+
+/* Status alerts */
+.form-status {
+  margin: 1.25rem 0 0;
+  font-size: 13px;
+  line-height: 20px;
+  padding: .85rem 1.15rem;
+  border-radius: 0;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status.is-error {
+  background: #fff5f5;
+  border: 1px solid #ffd2d2;
+  border-left: 3px solid #ba1a1a;
+  color: #ba1a1a;
+}
+
+.form-status.is-ok {
+  background: #fdfcf7;
+  border: 1px solid var(--gold-30);
+  border-left: 3px solid var(--gold-text);
+  color: var(--gold-text);
+}
+
+.form-status.is-notice {
+  background: #fffefb;
+  border: 1px solid var(--gold-30);
+  border-left: 3px solid var(--gold-text);
+  color: var(--black);
+}
+
+/* Switch navigation between signup & login */
+.auth-switch {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--grey);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+  font-size: 13px;
+  line-height: 20px;
+  color: rgba(16, 16, 16, .65);
+}
+
+.auth-switch-link {
+  color: var(--black);
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-size: 11px;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 1px;
+  transition: color .25s var(--ease), border-color .25s var(--ease);
+}
+
+.auth-switch-link:hover {
+  color: var(--gold-text);
+  border-color: var(--gold-text);
+}
+
+/* Responsive divider on desktop */
+@media (min-width: 992px) {
+  .form-col {
+    padding-left: 3.5rem;
+    border-left: 1px solid var(--gold-30);
+  }
+}
+
+/* Small screen: subtle divider above the benefits section */
+@media (max-width: 991.98px) {
+  .auth-side {
+    margin-top: 1rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--gold-30);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .auth-invitation {
+    padding: 1.25rem 1.25rem;
+  }
+  .auth-submit {
+    width: 100%;
+  }
+}

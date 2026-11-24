@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create Account — Rejuv4All</title>
+  <meta name="description" content="Create a Rejuv4All account for faster checkout, order tracking, and easy account management.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Poppins:wght@400;500;600&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="home.css" rel="stylesheet">
+  <link href="pages.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/css/intlTelInput.css" rel="stylesheet">
+  <link href="signup.css" rel="stylesheet">
+</head>
+<body class="page-inner page-auth page-signup">
+
+<!-- ============ NAVBAR (same as the other pages) ============ -->
+<header class="site-header" id="site-header">
+  <a class="site-logo" href="index.html" aria-label="Rejuv4All home">
+    <img src="assets/images/web/logo_transparent.png" alt="Rejuv4All" width="700" height="254">
+  </a>
+
+  <nav class="site-nav d-none d-lg-flex" aria-label="Primary">
+    <a href="index.html">Home</a>
+    <a href="about.html">Our Story</a>
+    <a href="index.html#formula">The Formula</a>
+    <a href="index.html#goals">Hair Journey</a>
+    <a href="index.html#ritual">The Ritual</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="site-tools">
+    <a class="icon-btn cart-link" href="cart.html" aria-label="Cart">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <span class="cart-count" id="cart-count" hidden>0</span>
+    </a>
+    <a class="btn-gold nav-cta" href="index.html#shop">Shop Now<i class="fa-solid fa-arrow-right btn-ico btn-ico--after" aria-hidden="true"></i></a>
+    <button class="icon-btn d-lg-none" type="button" id="mobile-menu-btn" aria-label="Open navigation menu" aria-controls="mobile-nav" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
+<aside class="drawer" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Site navigation" aria-hidden="true">
+  <div class="drawer-head">
+    <a class="drawer-logo" href="index.html" aria-label="Rejuv4All home"><img src="assets/images/web/logo_transparent.png" alt="Rejuv4All" width="700" height="254"></a>
+    <button type="button" class="drawer-close" id="mobile-close-btn" aria-label="Close navigation menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  </div>
+  <nav class="drawer-nav" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">Our Story</a>
+    <a href="index.html#goals">Hair Journey</a>
+    <a href="index.html#shop">The Signature Elixir</a>
+    <a href="index.html#ritual">The Ritual</a>
+    <a href="products.html">Products</a>
+    <a href="index.html#formula">The Formula</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="drawer-foot">
+    <a class="btn-gold btn-block" href="index.html#shop">Shop Now</a>
+    <a class="drawer-cart" href="cart.html"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i><span>Cart</span><span class="drawer-cart-count" id="drawer-cart-count" hidden>0</span></a>
+  </div>
+</aside>
+
+<main>
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="container-xl page-wrap">
+    <span class="intro__eyebrow">Customer Registration</span>
+    <h1 class="intro__title">Create an <span class="accent">Account</span></h1>
+    <p class="intro__text">Create your account for faster checkout, order tracking, and easy account management.</p>
+    <div class="intro__rule" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ============ MAIN CONTENT ============ -->
+<div class="page-main">
+  <div class="container-xl page-wrap">
+    <div class="row g-5">
+      <!-- Left Column: Account Benefits & Invitation (order-2 on mobile, order-lg-1 on desktop) -->
+      <div class="col-lg-5 auth-side order-2 order-lg-1">
+        <h2 class="block-title">Why Create an Account?</h2>
+        <p class="block-note">Enjoy a smoother shopping and order tracking experience.</p>
+
+        <ul class="auth-perks" aria-label="Account benefits">
+          <li class="perk-item">
+            <span class="perk-num">01</span>
+            <div class="perk-body">
+              <h3 class="perk-title">Fast &amp; Easy Checkout</h3>
+              <p class="perk-desc">Save your shipping and billing details so you can place future orders quickly and effortlessly.</p>
+            </div>
+          </li>
+          <li class="perk-item">
+            <span class="perk-num">02</span>
+            <div class="perk-body">
+              <h3 class="perk-title">Order Status &amp; Tracking</h3>
+              <p class="perk-desc">Check your order status anytime to know whether your package is placed, shipped, or delivered.</p>
+            </div>
+          </li>
+          <li class="perk-item">
+            <span class="perk-num">03</span>
+            <div class="perk-body">
+              <h3 class="perk-title">Order History &amp; Addresses</h3>
+              <p class="perk-desc">Review previous purchases, download invoices, and manage saved delivery addresses in one place.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="auth-invitation">
+          <h3 class="invitation-title">Already Have an Account?</h3>
+          <p class="invitation-desc">Sign in to view your orders, manage your shipping addresses, or make a new purchase.</p>
+          <a href="login.html" class="auth-invitation-link">
+            <span>Sign In</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Signup Form (order-1 on mobile, order-lg-2 on desktop) -->
+      <div class="col-lg-7 form-col order-1 order-lg-2">
+        <h2 class="block-title">Account Information</h2>
+        <p class="block-note">Fields marked with <span class="req">*</span> are required.</p>
+
+        <form id="signup-form" class="auth-form" novalidate>
+          <!-- Full Name -->
+          <div class="field">
+            <label for="signup-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="signup-name" name="name" autocomplete="name" placeholder="E.g. Eleanor Vance" required aria-describedby="signup-name-err">
+            <p class="field-error" id="signup-name-err"></p>
+          </div>
+
+          <!-- Email Address -->
+          <div class="field">
+            <label for="signup-email">Email Address <span class="req">*</span></label>
+            <input type="email" id="signup-email" name="email" autocomplete="email" placeholder="name@example.com" required aria-describedby="signup-email-err">
+            <p class="field-error" id="signup-email-err"></p>
+          </div>
+
+          <!-- Phone Number with intl-tel-input -->
+          <div class="field">
+            <label for="signup-phone">Phone Number <span class="req">*</span></label>
+            <div class="phone-wrap">
+              <input type="tel" id="signup-phone" name="phone" autocomplete="tel" placeholder="98765 43210" required aria-describedby="signup-phone-err">
+            </div>
+            <p class="field-error" id="signup-phone-err"></p>
+          </div>
+
+          <!-- Password with show/hide toggle -->
+          <div class="field">
+            <label for="signup-password">Password <span class="req">*</span></label>
+            <div class="password-wrap">
+              <input type="password" id="signup-password" name="password" autocomplete="new-password" placeholder="Create a secure password" required aria-describedby="signup-password-err signup-password-hint">
+              <button type="button" class="btn-toggle-pw" aria-label="Show password" aria-pressed="false" tabindex="0">
+                <i class="fa-regular fa-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+            <p class="field-hint" id="signup-password-hint">Must be at least 8 characters with at least one letter and one number.</p>
+            <p class="field-error" id="signup-password-err"></p>
+          </div>
+
+          <!-- Confirm Password with show/hide toggle -->
+          <div class="field">
+            <label for="signup-confirm-password">Confirm Password <span class="req">*</span></label>
+            <div class="password-wrap">
+              <input type="password" id="signup-confirm-password" name="confirmPassword" autocomplete="new-password" placeholder="Re-enter your password" required aria-describedby="signup-confirm-password-err">
+              <button type="button" class="btn-toggle-pw" aria-label="Show password" aria-pressed="false" tabindex="0">
+                <i class="fa-regular fa-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+            <p class="field-error" id="signup-confirm-password-err"></p>
+          </div>
+
+          <!-- Terms Notice -->
+          <div class="auth-terms">
+            <p>By creating an account, you acknowledge and agree to Rejuv4All's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+          </div>
+
+          <!-- Honeypot -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="signup-hp">Security Verification</label>
+            <input type="text" id="signup-hp" name="client_token" tabindex="-1" autocomplete="off">
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-ink auth-submit" id="signup-submit">
+            <span>Create Account</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+
+          <!-- Form Status / Feedback -->
+          <p class="form-status" id="signup-status" role="status" aria-live="polite"></p>
+
+          <!-- Switch to Login -->
+          <div class="auth-switch">
+            <span>Already have an account?</span>
+            <a href="login.html" class="auth-switch-link">Sign In</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<!-- ============ FOOTER (same as the other pages) ============ -->
+<footer class="site-footer">
+  <div class="container-xl footer-pad">
+    <div class="row g-5 mb-5">
+      <div class="col-md-6 col-lg-4">
+        <a href="index.html" class="d-inline-block mb-4"><img src="assets/images/web/logo_transparent.png" alt="Rejuv4All" class="footer-logo" width="700" height="254" loading="lazy"></a>
+        <p class="foot-copy">Architectural precision meets regenerative botanical alchemy. Formulated without compromise for transformative, sensory hair health and cellular renewal.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram (link to be added)"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook (link to be added)"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube (link to be added)"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2 offset-lg-1">
+        <h4>About Rejuv4All</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li><li><a href="index.html#story">Our Story</a></li><li><a href="index.html#formula">The Formula</a></li><li><a href="index.html#goals">Hair Journey</a></li><li><a href="index.html#ritual">The Ritual</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <h4>Client Care</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li><li><a href="index.html#faq">Shipping &amp; Returns</a></li><li><a href="index.html#faq">Consultation &amp; FAQ</a></li><li><a href="index.html#shop">Track Order</a></li><li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+      <div class="col-md-12 col-lg-3">
+        <h4>Gazette Privée</h4>
+        <p class="foot-copy">Receive monograph dispatches, early allocations, and holistic restorative protocols.</p>
+        <form class="newsletter" id="newsletter-form">
+          <input type="email" placeholder="ENTER EMAIL ADDRESS" required aria-label="Email address">
+          <button type="submit">Join</button>
+        </form>
+        <p class="newsletter-msg" id="newsletter-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <div>© 2025 REJUV4ALL BOTANICALS. ALL RIGHTS RESERVED.</div>
+      <div class="foot-links"><a href="#">PRIVACY POLICY</a><span>•</span><a href="#">TERMS OF SERVICE</a><span>•</span><a href="#">SUSTAINABILITY</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="home.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/intlTelInput.min.js"></script>
+<script src="signup.js"></script>
+</body>
+</html>

@@ -191,7 +191,7 @@
   var cartCount = $('#cart-count');
   var cartMsg = $('#cart-msg');
   var addBtn = $('#add-to-cart');
-  var PRODUCT = { id: 'rejuv4all-hair-elixir-50ml', name: 'Rejuv4All Botanical Restorative Hair Elixir', price: 68, currency: 'USD' };
+  var PRODUCT = { id: 'rejuv4all-hair-elixir-50ml', name: 'Rejuv4All Botanical Restorative Hair Elixir', price: 68, currency: 'USD', image: 'assets/images/web/hero_slide3.webp', size: '50 ml / 1.7 fl. oz.', description: 'Cold-pressed virgin lipids in apothecary amber UV-shield glass.' };
 
   // Hero CTA price: always taken from PRODUCT (the same data the cart and Add to Cart label use)
   var heroPrice = $('#hero-price');
@@ -224,15 +224,17 @@
   if (minus) minus.addEventListener('click', function () { setQty(getQty() - 1); });
   if (plus) plus.addEventListener('click', function () { setQty(getQty() + 1); });
 
-  function addToCart() {
-    var cart = readCart(), qty = getQty();
-    var line = cart.items.filter(function (it) { return it.id === PRODUCT.id; })[0];
+  // Add any catalogue product to the (single) cart; used by the product section and the products page
+  function addItem(prod, qty) {
+    var cart = readCart();
+    var line = cart.items.filter(function (it) { return it.id === prod.id; })[0];
     if (line) line.qty = Math.min(MAX_QTY, line.qty + qty);
-    else cart.items.push({ id: PRODUCT.id, name: PRODUCT.name, price: PRODUCT.price, currency: PRODUCT.currency, qty: qty });
+    else cart.items.push({ id: prod.id, name: prod.name, price: prod.price, currency: prod.currency || 'USD', qty: qty });
     writeCart(cart);
     renderCount(true);
     return qty;
   }
+  function addToCart() { return addItem(PRODUCT, getQty()); }
   if (addBtn) addBtn.addEventListener('click', function () {
     var q = addToCart();
     if (cartMsg) cartMsg.textContent = q + ' × Rejuv4All Hair Elixir added to your cart.';
@@ -244,6 +246,9 @@
   });
   setQty(1);
   renderCount(false);
+  // Shared with the other pages (cart.html): one cart implementation, one storage key
+  window.Rejuv4All = { product: PRODUCT, maxQty: MAX_QTY, readCart: readCart, writeCart: writeCart, renderCount: renderCount, addItem: addItem };
+  window.addEventListener('storage', function (e) { if (e.key === CART_KEY) renderCount(false); }); // cart changed in another tab
 
   /* ---------- Formula timeline: scroll-driven line fill (reversible) ---------- */
   var tlWrap = $('.timeline-wrap');
