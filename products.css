@@ -24,6 +24,24 @@
   background-repeat: no-repeat; background-position: right 1rem center; }
 .ctl select:hover, .search-box input:hover { border-color: var(--gold); }
 .ctl select:focus, .search-box input:focus { outline: 0; border-color: var(--gold); background-color: var(--white); box-shadow: 0 0 0 3px var(--gold-20); }
+/* Sort By — shares the Search input's box (46px, same border/background/type); only the arrow and option list are extra */
+#shop-sort { box-sizing: border-box; height: 46px; min-height: 46px; margin: 0; padding-top: 0; padding-bottom: 0; line-height: 44px; text-overflow: ellipsis; }
+#shop-sort option { font-family: var(--font-sans); font-size: 14px; background: #fffefb; color: var(--black); }
+#shop-sort option:hover, #shop-sort option:focus { background: var(--grey); }
+#shop-sort option:checked { background: var(--gold-20); font-weight: 500; }
+
+/* Themed open list where supported (Chromium 135+); other browsers keep the native list */
+@supports (appearance: base-select) {
+  #shop-sort, #shop-sort::picker(select) { appearance: base-select; }
+  #shop-sort { display: flex; align-items: center; justify-content: space-between; background-image: none; line-height: normal; }
+  #shop-sort::picker-icon { content: ""; width: 12px; height: 8px; flex: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23715c1f' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat center; transition: transform .25s var(--ease); }
+  #shop-sort:open::picker-icon { transform: rotate(180deg); }
+  #shop-sort::picker(select) { margin-top: -1px; padding: 0; border: 1px solid var(--gold); border-radius: 0; background: #fffefb; box-shadow: none; }
+  #shop-sort option { display: flex; align-items: center; justify-content: space-between; height: 44px; padding: 0 1rem; cursor: pointer; }
+  #shop-sort option + option { border-top: 1px solid var(--grey); }
+  #shop-sort option::checkmark { content: "✓"; color: var(--gold-text); font-size: 12px; order: 1; }
+}
+
 .search-box { position: relative; }
 .search-box > i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); font-size: 13px; color: var(--gold-text); pointer-events: none; }
 .search-box input { padding-left: 2.6rem; padding-right: 2.6rem; }
@@ -95,8 +113,8 @@
 /* ---------- Hero: compact, centred banner ---------- */
 .shop-hero { position: relative; display: flex; align-items: center; justify-content: center; min-height: 400px; padding: calc(64px + 2rem) 0 2rem; overflow: hidden; background: #d9bf8e; color: var(--white); text-align: center; }
 .shop-hero__bg, .shop-hero__bg img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.shop-hero__bg img { object-fit: cover; object-position: 50% 22%; }
-.shop-hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(rgba(16, 16, 16, .5), rgba(16, 16, 16, .62)); }
+.shop-hero__bg img { object-fit: cover; object-position: 50% 55%; }
+.shop-hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(rgba(16, 16, 16, .25), rgba(16, 16, 16, .45)); }
 .shop-hero__inner { position: relative; z-index: 2; }
 .shop-hero__title { max-width: 36rem; margin: 0 auto; font-family: var(--font-heading); font-weight: 500; font-size: clamp(2rem, 1.55rem + 2.2vw, 3.4rem); line-height: 1.1; letter-spacing: -.015em; color: var(--white); text-shadow: 0 1px 18px rgba(16, 16, 16, .45); }
 .shop-hero__title .accent { color: var(--gold); }
@@ -139,3 +157,25 @@
 .page-products .page-wrap { padding-left: 1.1rem; padding-right: 1.1rem; }
 @media (min-width: 576px) { .page-products .page-wrap { padding-left: 2rem; padding-right: 2rem; } }
 @media (min-width: 992px) { .page-products .page-wrap { max-width: 1440px; padding-left: 3rem; padding-right: 3rem; } }
+
+/* ---------- Hero micro-interactions (animation only; layout, type and colours above are untouched) ---------- */
+@keyframes shopHeroZoom { from { transform: scale(1.14); } to { transform: scale(1); } }
+@keyframes shopHeroDrift { from { transform: scale(1.03) translate3d(0, 0, 0); } to { transform: scale(1.06) translate3d(-.8%, -.6%, 0); } }
+@keyframes shopHeroRise { from { opacity: 0; transform: translate3d(0, 18px, 0); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes shopHeroSheen { from { background-position: 100% 0; } to { background-position: 0 0; } }
+.shop-hero__bg { animation: shopHeroDrift 26s ease-in-out 1.6s infinite alternate; will-change: transform; }
+.shop-hero__bg img { animation: shopHeroZoom 2.4s cubic-bezier(.16, .84, .3, 1) both; }
+.shop-hero__title { animation: shopHeroRise 1s cubic-bezier(.2, .7, .2, 1) .2s both; }
+.shop-hero__text { animation: shopHeroRise 1s cubic-bezier(.2, .7, .2, 1) .5s both; }
+/* the gold word catches the light once, after the heading has settled */
+.shop-hero__title .accent {
+  background: linear-gradient(100deg, var(--gold) 0%, var(--gold) 38%, #f6e3a8 50%, var(--gold) 62%, var(--gold) 100%);
+  background-size: 250% 100%; background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  text-shadow: none; filter: drop-shadow(0 1px 9px rgba(16, 16, 16, .45));
+  animation: shopHeroSheen 1.8s ease-out 1.1s both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .shop-hero__bg, .shop-hero__bg img, .shop-hero__title, .shop-hero__text, .shop-hero__title .accent { animation: none; will-change: auto; }
+  .shop-hero__title .accent { background: none; -webkit-text-fill-color: var(--gold); text-shadow: 0 1px 18px rgba(16, 16, 16, .45); filter: none; }
+}

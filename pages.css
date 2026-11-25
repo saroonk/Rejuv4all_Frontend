@@ -5,12 +5,13 @@
    ========================================================= */
 
 /* The approved fixed header stays solid on pages without a hero */
+/* Same bar height and logo size as the homepage (home.css: 76px / 84px, 64px once scrolled; logo 40 / 46 / 50px) */
 .page-inner .site-header {
-  height: 64px;
+  height: var(--header-h);
   background: rgba(16, 16, 16, .92);
   -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
 }
-.page-inner .site-logo img { height: 36px; }
+.page-inner .site-header.is-scrolled { height: 64px; }
 
 /* Page introduction (shared by contact + cart): eyebrow, title with a gold accent word, optional line of text,
    closed by a thin muted-gold divider. It sits on the existing page background. */
@@ -48,7 +49,6 @@
 @media (prefers-reduced-motion: reduce) { .btn-ink:hover i { transform: none; } }
 
 @media (min-width: 992px) {
-  .page-inner .site-header { height: 72px; }
   .intro { padding-top: calc(72px + 3rem); }
   .intro__rule { margin-top: 2.75rem; }
   .intro + .page-main { padding-top: 4rem; }

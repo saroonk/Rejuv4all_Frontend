@@ -1,0 +1,32 @@
+/* =========================================================
+   Rejuv4All — navbar profile / account dropdown (shared by every page)
+   White account menu with two icon + text items; opens on hover (mouse) or tap/click; behaviour in profile-menu.js.
+   ========================================================= */
+.profile-menu { position: relative; display: flex; align-items: center; }
+.profile-btn[aria-expanded="true"] { color: var(--gold-light); }
+
+.profile-dropdown {
+  position: absolute; top: 100%; right: -.6rem; z-index: 1;
+  padding-top: .75rem; /* hover bridge between icon and panel */
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: opacity .22s var(--ease), transform .22s var(--ease), visibility 0s linear .22s;
+}
+.profile-dropdown ul {
+  margin: 0; padding: .4rem; list-style: none; width: 11.5rem;
+  background: #fff; border: 1px solid rgba(16, 16, 16, .07); border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(16, 16, 16, .14), 0 2px 6px rgba(16, 16, 16, .06);
+}
+.profile-dropdown a, .profile-dropdown button {
+  display: flex; align-items: center; gap: .85rem; width: 100%; padding: .8rem .9rem; border: 0; border-radius: 4px; background: none; text-align: left; cursor: pointer; white-space: nowrap;
+  font-family: var(--font-sans); font-size: 11px; line-height: 1.2; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--black);
+  transition: color .2s, background-color .2s;
+}
+.profile-dropdown i { flex: none; width: 1rem; text-align: center; font-size: 14px; color: var(--gold-text); }
+.profile-dropdown a:hover, .profile-dropdown a:focus-visible, .profile-dropdown button:hover, .profile-dropdown button:focus-visible { color: var(--gold-text); background: rgba(196, 151, 14, .08); outline: 0; }
+.profile-dropdown a:hover i, .profile-dropdown a:focus-visible i, .profile-dropdown button:hover i, .profile-dropdown button:focus-visible i { color: var(--gold-text); }
+
+.profile-menu.is-open .profile-dropdown, .profile-menu:has(:focus-visible) .profile-dropdown { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+@media (hover: hover) { .profile-menu:hover .profile-dropdown { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; } }
+/* very narrow phones: the extra icon needs the room; Shop Now stays one tap away in the menu drawer */
+@media (max-width: 479.98px) { .site-tools .nav-cta { display: none; } }
+@media (prefers-reduced-motion: reduce) { .profile-dropdown { transition: none; transform: none; } }
