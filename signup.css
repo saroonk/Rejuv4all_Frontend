@@ -331,13 +331,7 @@
 /* Submit button */
 .auth-submit {
   margin-top: 1rem;
-  padding: 1.1rem 2.5rem;
-  border-bottom: 2px solid var(--gold);
-}
-
-.auth-submit:hover,
-.auth-submit:focus-visible {
-  border-bottom-color: var(--black);
+  padding: 1.1rem 2.5rem calc(1.1rem + 1px); /* keeps the former 2px bottom edge's height */
 }
 
 .auth-submit.is-loading {
